@@ -3,17 +3,16 @@ services:
   app_proxy:
     environment:
       APP_HOST: lazylibrarian_server_1
-      APP_PORT: 5299
+      APP_PORT: 9117
+      PROXY_AUTH_WHITELIST: /api/* /dl/*
     container_name: lazylibrarian_app_proxy_1
-  server:
-    image: >-
-      lscr.io/linuxserver/lazylibrarian:latest
+    image: lscr.io/linuxserver/lazylibrarian:latest
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/data:/config
+      - ${UMBREL_ROOT}/home/downloads/plex:/downloads
+    stop_grace_period: 1m
     environment:
       - PUID=1000
       - PGID=1000
-    volumes:
-      - ${APP_DATA_DIR}/data/config:/config
-      - ${UMBREL_ROOT}/home/downloads/plex:/downloads
-    restart: on-failure
     container_name: lazylibrarian_server_1
-  
