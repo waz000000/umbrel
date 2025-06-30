@@ -3,7 +3,7 @@ version: '3.9'
 services:
   app_proxy:
     environment:
-      APP_HOST: lazyLibrarian_web_1
+      APP_HOST: lazylibrarian_web_1
       APP_PORT: 5299
       PROXY_AUTH_ADD: "false"
 
@@ -16,7 +16,6 @@ services:
       # - ACTUAL_HTTPS_KEY=/data/selfhost.key
       # - ACTUAL_HTTPS_CERT=/data/selfhost.crt
         - ACTUAL_PORT=5299
-        - ACTUAL_TRUSTED_PROXIES=umbrel.local,umbrel, 
       # - ACTUAL_UPLOAD_FILE_SYNC_SIZE_LIMIT_MB=20
       # - ACTUAL_UPLOAD_SYNC_ENCRYPTED_FILE_SYNC_SIZE_LIMIT_MB=50
       # - ACTUAL_UPLOAD_FILE_SIZE_LIMIT_MB=20
