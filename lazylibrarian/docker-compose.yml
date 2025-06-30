@@ -2,14 +2,18 @@ version: '3.7'
 services:
   app_proxy:
     environment:
-      APP_HOST: lazylibrarian_web_1
+      APP_HOST: lazylibrarian_server_1
       APP_PORT: 5299
-      PROXY_AUTH_ADD: 'false'
-    image: lscr.io/linuxserver/lazylibrarian:latest
-    user: '1000:1000'
-    restart: on-failure
+    container_name: lazylibrarian_app_proxy_1
+  server:
+    image: >-
+      lscr.io/linuxserver/lazylibrarian:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
     volumes:
-      - ${APP_DATA_DIR}/data/config:/home/node/config
-      - ${APP_DATA_DIR}/data/metadata:/home/node/metadata
-      - ${UMBREL_ROOT}Downloads/plex/downloads:/downloads
-    container_name: lazylibrarian_web_1
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/home/downloads/plex:/downloads
+    restart: on-failure
+    container_name: lazylibrarian_server_1
+  
