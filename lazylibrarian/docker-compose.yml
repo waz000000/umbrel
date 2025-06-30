@@ -9,10 +9,6 @@ services:
     image: lscr.io/linuxserver/lazylibrarian:latest
     user: '1000:1000'
     restart: on-failure
-    environment:
-      - CONFIG_PATH=/home/node/config
-      - LAZYLIBRARIAN_UID=1000
-      - LAZYLIBRARIAN_GID=1000
     volumes:
       - ${APP_DATA_DIR}/data/config:/home/node/config
       - ${APP_DATA_DIR}/data/metadata:/home/node/metadata
