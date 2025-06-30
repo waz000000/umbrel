@@ -5,7 +5,6 @@ services:
       APP_HOST: lazylibrarian_server_1
       APP_PORT: 9117
       PROXY_AUTH_WHITELIST: /api/* /dl/*
-    container_name: lazylibrarian_app_proxy_1
     image: lscr.io/linuxserver/lazylibrarian:latest
     restart: on-failure
     volumes:
