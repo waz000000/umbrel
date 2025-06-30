@@ -1,0 +1,26 @@
+manifestVersion: 1
+id: lazylibrarian
+name: lazylibrarian
+tagline: lazylibrarian
+icon: https://svgur.com/i/mvA.svg
+category: Development
+version: "1.0.0"
+port: 5299
+description: >-
+  lazylibrarian
+
+
+  You can also add newlines!
+
+developer: Umbrel
+website: https://umbrel.com
+submitter: Umbrel
+submission: https://github.com/waz000000/umbrel.git
+repo: https://github.com/waz000000/umbrel.git
+support: https://github.com/waz000000/umbrel.git
+releaseNotes: >-
+ https://github.com/waz000000/umbrel.git
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
