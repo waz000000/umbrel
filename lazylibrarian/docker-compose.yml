@@ -1,17 +1,16 @@
-version: '3.7'
+---
 services:
-  app_proxy:
-    environment:
-      APP_HOST: lazylibrarian_server_1
-      APP_PORT: 9117
-      PROXY_AUTH_WHITELIST: /api/* /dl/*
+  lazylibrarian:
     image: lscr.io/linuxserver/lazylibrarian:latest
-    restart: on-failure
-    volumes:
-      - ${APP_DATA_DIR}/data:/config
-      - ${UMBREL_ROOT}/home/downloads/plex:/downloads
-    stop_grace_period: 1m
+    container_name: lazylibrarian
     environment:
       - PUID=1000
       - PGID=1000
-    container_name: lazylibrarian_server_1
+      - TZ=Etc/UTC
+      - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:lazylibrarian-ffmpeg #optional
+    volumes:
+     - ${APP_DATA_DIR}/data:/config
+    - ${UMBREL_ROOT}/home/downloads/plex:/downloads
+    ports:
+      - 5299:5299
+    restart: unless-stopped
